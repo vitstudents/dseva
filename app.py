@@ -15,6 +15,9 @@ scopes = ["https://www.googleapis.com/auth/spreadsheets"]
 # Load credentials from environment or file
 if os.getenv('GOOGLE_CREDENTIALS'):
     creds_dict = json.loads(os.getenv('GOOGLE_CREDENTIALS'))
+    # Fix newlines in private_key
+    if 'private_key' in creds_dict:
+        creds_dict['private_key'] = creds_dict['private_key'].replace('\\n', '\n')
     creds = Credentials.from_service_account_info(creds_dict, scopes=scopes)
 else:
     creds = Credentials.from_service_account_file("cred.json", scopes=scopes)
