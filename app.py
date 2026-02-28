@@ -4,6 +4,10 @@ from google.oauth2.service_account import Credentials
 from concurrent.futures import ThreadPoolExecutor
 import os
 import json
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 app = Flask(__name__)
 
